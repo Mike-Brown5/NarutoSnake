@@ -1,7 +1,7 @@
 const cvs = document.getElementById("Snake");
 const ctx = cvs.getContext("2d");
 
-// creat the units
+// create the units
 const box = 32 ;
 // loading images
 const ground = new Image();
@@ -15,20 +15,20 @@ const eat =new Audio();
 dead.src ="dead.mp3";
 eat.src ="eat.mp3"
 
-//creat the snake
+//create the snake
 let snake = [];
 snake[0]={
     x:9*box,
     y: 10*box
 }
 
-//creat the food
+//create the food
 let food = {
     x : Math.floor(Math.random()*17+1) *box,
     y : Math.floor(Math.random()*15+3) *box
 
 }
-//creat the score var
+//create the score var
 let score = 0;
 
 // control the snake
@@ -45,8 +45,8 @@ function direction(event){
         d = "DOWN"
     }
 }
-//check colision function
-function colision(head,array){
+//check collision function
+function collision(head,array){
     for(let i =0; i < array.length; i++){
         if(head.x == array[i].x && head.y == array[i].y){
             return true;
@@ -96,7 +96,7 @@ let newHead = {
     y:snakeY
 }
 // game over
-if(snakeX < box || snakeX> 17 *box || snakeY < 3*box || snakeY > 17*box || colision(newHead,snake)){
+if(snakeX < box || snakeX> 17 *box || snakeY < 3*box || snakeY > 17*box || collision(newHead,snake)){
     clearInterval(game);
     dead.play();
 }
